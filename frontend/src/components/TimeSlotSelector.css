@@ -1,0 +1,133 @@
+/* 時間帯選択コンポーネントのスタイル */
+.time-slot-selector {
+  background: rgba(26, 26, 46, 0.9);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.time-slot-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.time-slot-loading,
+.time-slot-error,
+.time-slot-message {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.time-slot-error {
+  color: #ff6b6b;
+}
+
+.time-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.time-slot-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.time-slot-item:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(74, 144, 226, 0.5);
+  transform: translateY(-2px);
+}
+
+.time-slot-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.time-slot-available {
+  border-color: rgba(46, 204, 113, 0.3);
+}
+
+.time-slot-available:hover:not(:disabled) {
+  border-color: rgba(46, 204, 113, 0.6);
+}
+
+.time-slot-limited {
+  border-color: rgba(243, 156, 18, 0.3);
+}
+
+.time-slot-limited:hover:not(:disabled) {
+  border-color: rgba(243, 156, 18, 0.6);
+}
+
+.time-slot-full {
+  border-color: rgba(231, 76, 60, 0.3);
+}
+
+.time-slot-selected {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border-color: #4a90e2;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}
+
+.time-slot-time {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.time-slot-status {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.time-slot-available .time-slot-status {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.time-slot-limited .time-slot-status {
+  background: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+}
+
+.time-slot-full .time-slot-status {
+  background: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.time-slot-availability {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .time-slot-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .time-slot-item {
+    padding: 12px 8px;
+  }
+
+  .time-slot-time {
+    font-size: 16px;
+  }
+}
+
+

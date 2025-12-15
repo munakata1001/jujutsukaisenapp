@@ -1,0 +1,329 @@
+/* 予約確認画面のスタイル */
+.reservation-confirm-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 20px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #fff;
+  font-size: 18px;
+}
+
+.error-container {
+  max-width: 800px;
+  margin: 50px auto;
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: #fff;
+}
+
+.error-container h2 {
+  color: #ff6b6b;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reservation-confirm-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.confirm-page-title {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-page-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin: 0 0 30px 0;
+}
+
+.reservation-confirm-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.reservation-info-card {
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.info-card-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  min-width: 120px;
+}
+
+.info-value {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.product-selection-section {
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.section-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+}
+
+.no-products-message {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  padding: 20px;
+}
+
+.selected-products-summary {
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.selected-products-summary h3 {
+  color: #fff;
+  font-size: 18px;
+  margin: 0 0 16px 0;
+}
+
+.selected-products-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.selected-products-summary li {
+  color: rgba(255, 255, 255, 0.9);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.selected-products-summary li:last-child {
+  border-bottom: none;
+}
+
+.total-price {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  padding-top: 16px;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.reservation-form {
+  background: rgba(26, 26, 46, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  color: #e0e0e0;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.required {
+  color: #e74c3c;
+  margin-left: 4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-input:disabled,
+.form-input.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin: 4px 0 0 0;
+}
+
+.products-placeholder {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.error-message {
+  background: rgba(231, 76, 60, 0.2);
+  border: 1px solid rgba(231, 76, 60, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  color: #ff6b6b;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.cancel-button,
+.submit-button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.cancel-button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  border: none;
+  color: #fff;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #357abd 0%, #2a5f9a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+}
+
+.cancel-button:disabled,
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .reservation-confirm-content {
+    padding: 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .cancel-button,
+  .submit-button {
+    width: 100%;
+  }
+}
+
+
+

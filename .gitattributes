@@ -1,0 +1,23 @@
+# テキストファイルのエンコーディング設定（文字化け対策）
+* text=auto eol=lf
+
+# ソースコードファイルはUTF-8で保存
+*.js text eol=lf charset=utf-8
+*.jsx text eol=lf charset=utf-8
+*.ts text eol=lf charset=utf-8
+*.tsx text eol=lf charset=utf-8
+*.py text eol=lf charset=utf-8
+*.json text eol=lf charset=utf-8
+*.md text eol=lf charset=utf-8
+*.html text eol=lf charset=utf-8
+*.css text eol=lf charset=utf-8
+*.txt text eol=lf charset=utf-8
+
+# バイナリファイル
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+

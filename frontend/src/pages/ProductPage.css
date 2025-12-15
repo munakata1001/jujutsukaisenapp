@@ -1,0 +1,74 @@
+/* 商品ページのスタイル */
+.product-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.product-page-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.product-page-title {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.product-page-subtitle {
+  font-size: 1.1em;
+  color: #666;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2em;
+  color: #666;
+}
+
+.product-page-footer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.selected-products-summary h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.selected-products-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.selected-products-summary li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.total-price {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #e74c3c;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid #ddd;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .product-page {
+    padding: 16px;
+  }
+
+  .product-page-title {
+    font-size: 1.5em;
+  }
+}
+

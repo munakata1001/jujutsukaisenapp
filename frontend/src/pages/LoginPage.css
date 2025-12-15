@@ -1,0 +1,48 @@
+/* ログインページのスタイル */
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.login-page-header {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.login-page-title {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.login-page-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  margin: 0;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.loading-spinner {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+  .login-page-title {
+    font-size: 24px;
+  }
+
+  .login-page-subtitle {
+    font-size: 16px;
+  }
+}
+

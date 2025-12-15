@@ -1,0 +1,148 @@
+# 呪術廻戦ポップアップショップ予約カレンダー 開発ルール
+
+## 基本方針
+
+このプロジェクトは、要件定義書（要件定義書.md）と基本設計書に基づいて開発を行います。
+すべてのコード実装は、これらのドキュメントに準拠する必要があります。
+
+## ディレクトリ構成の遵守
+
+### フロントエンド（frontend/）
+
+- **src/components/**: 再利用可能なUIコンポーネント（Button, Card, Form, Calendar等）
+- **src/pages/**: ページコンポーネント（TopPage, ReservationPage, AdminPage等）
+- **src/hooks/**: カスタムReactフック（useReservation, useCalendar等）
+- **src/context/**: React Context API（認証状態、予約状態等）
+- **src/services/**: API呼び出し関数（reservationService, productService等）
+- **src/utils/**: ユーティリティ関数（dateFormatter, validator等）
+
+**重要**: コンポーネントは適切なディレクトリに配置すること。ページ固有のコンポーネントはpages/内に、再利用可能なコンポーネントはcomponents/に配置する。
+
+### バックエンド（backend/）
+
+- **app/api/**: FastAPIルーター（reservations.py, timeslots.py, products.py等）
+- **app/models/**: Firestoreデータモデル定義
+- **app/schemas/**: Pydanticスキーマ（リクエスト/レスポンスバリデーション）
+- **app/services/**: ビジネスロジック（reservationService, timeslotService等）
+- **app/utils/**: ユーティリティ関数（auth, errors等）
+- **tests/**: テストファイル
+
+**重要**: APIエンドポイントは機能ごとにファイルを分割し、app/api/に配置する。
+ビジネスロジックはapp/services/に、データモデルはapp/models/に配置する。
+
+## ファイルサイズ制限
+
+- **1ファイルあたり最大400行を超えないこと**
+- 400行を超える場合は、適切に分割する：
+  - コンポーネント: より小さなサブコンポーネントに分割
+  - サービス: 機能ごとにファイルを分割
+  - スキーマ: 関連するスキーマをグループ化して別ファイルに
+
+## コーディング規約
+
+### コメント
+
+- **コメントはシンプルかつ分かりやすく記述する**
+- 日本語で記述する（プロジェクトの性質上）
+- 複雑なロジックには必ずコメントを追加する
+- 関数/メソッドには目的を説明するコメントを追加する
+- 不要なコメントは書かない（自明なコードにはコメント不要）
+
+#### コメントの例
+
+```javascript
+// 予約可能な日時を取得する
+const getAvailableSlots = async (date) => {
+  // ...
+}
+
+// 購入制限をチェック（1予約あたりの最大購入数、総受注数上限）
+const checkPurchaseLimit = (product, quantity) => {
+  // ...
+}
+```
+
+```python
+# 予約を作成し、予約番号を発行する
+def create_reservation(reservation_data: ReservationCreate) -> Reservation:
+    # 予約可能枠の確認
+    # ...
+    
+    # 予約データの保存
+    # ...
+```
+
+### 命名規則
+
+- **フロントエンド（JavaScript/React）**:
+  - コンポーネント: PascalCase（例: `ReservationCalendar`）
+  - 関数/変数: camelCase（例: `getAvailableSlots`）
+  - 定数: UPPER_SNAKE_CASE（例: `MAX_RESERVATION_COUNT`）
+
+- **バックエンド（Python）**:
+  - クラス: PascalCase（例: `ReservationService`）
+  - 関数/変数: snake_case（例: `create_reservation`）
+  - 定数: UPPER_SNAKE_CASE（例: `MAX_RESERVATION_COUNT`）
+
+### エラーハンドリング
+
+- 適切なエラーハンドリングを実装する
+- ユーザーに分かりやすいエラーメッセージを表示する
+- バックエンドでは適切なHTTPステータスコードを返す
+
+### 型定義
+
+- **フロントエンド**: TypeScriptまたはPropTypesを使用（可能な限り型安全性を確保）
+- **バックエンド**: Pydanticスキーマで型チェックを行う
+
+## Gitコミット時の注意事項
+
+### 文字化け対策
+
+- **すべてのファイルはUTF-8エンコーディングで保存する**
+- コメントに日本語を使用する場合は、必ずUTF-8で保存すること
+- `.gitattributes`ファイルでテキストファイルのエンコーディングを指定する
+
+### コミットメッセージ
+
+- コミットメッセージは日本語で記述可能だが、簡潔に
+- 変更内容が明確に分かるように記述する
+- 例: `feat: 予約機能の実装`, `fix: カレンダー表示のバグ修正`
+
+## コード実装時のチェックリスト
+
+実装前に以下を確認すること：
+
+1. ✅ 要件定義書・基本設計書に基づいているか
+2. ✅ 適切なディレクトリに配置されているか
+3. ✅ ファイルサイズが400行以下か
+4. ✅ コメントが適切に記述されているか（シンプルで分かりやすい）
+5. ✅ 命名規則に従っているか
+6. ✅ エラーハンドリングが実装されているか
+7. ✅ UTF-8エンコーディングで保存されているか
+
+## テスト
+
+- 重要な機能には必ずテストを追加する
+- フロントエンド: React Testing Libraryを使用
+- バックエンド: pytestを使用
+
+## パフォーマンス
+
+- API応答時間は1秒以内を目標とする
+- 不要な再レンダリングを避ける（React.memo, useMemo等を適切に使用）
+- データベースクエリは最適化する
+
+## セキュリティ
+
+- 個人情報は適切に保護する
+- 入力値のバリデーションを必ず実装する
+- Firebase Authenticationを適切に使用する
+- CORS設定を適切に行う
+
+## その他
+
+- コードレビューを実施する
+- ドキュメントを適切に更新する
+- 依存関係のバージョンを固定する（package.json, requirements.txt）
+

@@ -1,0 +1,41 @@
+mutation CreatePublicList($name: String!, $description: String) @auth(level: PUBLIC, insecureReason: "Public lists do not require authentication.") {
+  list_insert(data: {
+    name: $name,
+    description: $description,
+    public: true,
+    userId_expr: "uuidV4()", # Dummy Value
+    createdAt_expr: "request.time",
+    updatedAt_expr: "request.time"
+  })
+}
+
+query GetPublicLists @auth(level: PUBLIC, insecureReason: "This query retrieves public lists and does not require user authentication.") {
+  lists(where: {public: {eq: true}}) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+
+mutation CreateUserList($name: String!, $description: String) @auth(level: USER) {
+  list_insert(data: {
+    name: $name,
+    description: $description,
+    public: false,
+    userId_expr: "auth.uid",
+    createdAt_expr: "request.time",
+    updatedAt_expr: "request.time"
+  })
+}
+
+query GetUserLists @auth(level: USER) {
+  lists(where: {userId: {eq_expr: "auth.uid"}}) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}

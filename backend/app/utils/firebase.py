@@ -3,8 +3,8 @@ import os
 os.environ['GRPC_VERBOSITY'] = 'ERROR'
 import json
 from typing import Tuple
-import firebase_admin
-from firebase_admin import credentials, firestore
+import firebase_admin  # pyright: ignore[reportMissingImports]
+from firebase_admin import credentials, firestore  # pyright: ignore[reportMissingImports]
 from dotenv import load_dotenv
 
 load_dotenv()

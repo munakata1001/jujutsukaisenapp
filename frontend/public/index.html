@@ -9,6 +9,12 @@
       content="呪術廻戦ポップアップショップ予約カレンダー"
     />
     <title>呪術廻戦ポップアップショップ予約</title>
+    <!--
+      Firebase設定のフォールバック:
+      - 通常は `frontend/.env` の REACT_APP_FIREBASE_* を使用（CRA）
+      - `.env` が読み込めない/作れない環境向けに `public/firebase-config.js` を読み込む
+    -->
+    <script src="%PUBLIC_URL%/firebase-config.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

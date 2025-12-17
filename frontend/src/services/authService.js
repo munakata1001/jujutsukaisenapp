@@ -7,7 +7,7 @@ import {
   sendPasswordResetEmail,
   deleteUser,
 } from 'firebase/auth';
-import { auth, isFirebaseConfigured, initializationError } from '../utils/firebase';
+import { auth, getMissingFirebaseKeys, isFirebaseConfigured, initializationError } from '../utils/firebase';
 import { getErrorMessage } from '../utils/errorMessages';
 
 // Firebaseが初期化されていない場合のエラーチェック
@@ -32,9 +32,13 @@ export const loginWithEmail = async (email, password) => {
     return { success: true, user: userCredential.user };
   } catch (error) {
     if (error.message === 'FIREBASE_NOT_CONFIGURED') {
+      const missing = getMissingFirebaseKeys?.() || [];
       return { 
         success: false, 
-        error: 'Firebase設定が不完全です。.envファイルにFirebase設定を追加してください。' 
+        error:
+          missing.length > 0
+            ? `Firebase設定が不完全です（不足: ${missing.join(', ')}）。frontend/.env（REACT_APP_FIREBASE_*）または public/firebase-config.js にFirebase設定を追加してください。`
+            : 'Firebase設定が不完全です。.envファイルにFirebase設定を追加してください。'
       };
     }
     if (error.message === 'FIREBASE_NOT_INITIALIZED') {
@@ -76,7 +80,7 @@ export const registerWithEmail = async (email, password) => {
     if (error.message === 'FIREBASE_NOT_CONFIGURED') {
       return { 
         success: false, 
-        error: 'Firebase設定が不完全です。.envファイルにFirebase設定を追加し、開発サーバーを再起動してください。詳細は frontend/FIREBASE_SETUP.md を参照してください。' 
+        error: 'Firebase設定が不完全です。.envファイルにFirebase設定を追加し、開発サーバーを再起動してください。手順は frontend/firebase.env.txt を参照してください。' 
       };
     }
     if (error.message === 'FIREBASE_INITIALIZATION_FAILED') {

@@ -72,7 +72,12 @@ const HomePage = () => {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router
+        // React Router v7 で挙動が変わるポイントを先に有効化して警告を抑制する
+        // - v7_startTransition: 画面遷移に伴うstate更新を startTransition でラップする
+        // - v7_relativeSplatPath: splat(*)配下の相対パス解決ルール変更に追従する
+        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+      >
         <div className="App">
           <Routes>
             <Route path="/login" element={<LoginPage />} />
